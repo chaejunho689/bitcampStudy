@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="memberSQL">
+ 
+ 	<!-- 만약에 테이블의 컬럼과 객체의 필드명이 다른 경우 -->
+	<resultMap	type="member.bean.MemberDTO" id="memberResult">
+		<result column ="NAME" property ="name" />		
+		<result column ="ID" property ="id" />		
+		<result column ="PWD" property ="pwd" />		
+	</resultMap>
+ 
+ 	 <select id="login" resultMap="memberResult" parameterType="member">
+ 		select * from member where id=#{id} and pwd=#{pwd}
+ 	</select>
+ 	
+	<select id="isExistId" resultMap="memberResult" parameterType="String">
+ 		select * from member where id=#{id}
+ 	</select>
+ 	
+ 	<insert id="register" parameterType="member">
+ 		INSERT INTO MEMBER(ID, PWD, NAME, GENDER, EMAIL1, EMAIL2, TEL1, TEL2, TEL3, ZIPCODE, ADDR1, ADDR2, LOGTIME) 
+ 		VALUES(#{id}, #{pwd}, #{name}, #{gender}, #{email1}, #{email2}, #{tel1}, #{tel2}, #{tel3}, #{zipcode}, #{addr1}, #{addr2}, SYSDATE)
+ 	</insert>
+ 	
+ 	
+ 	<select id="getMember" resultMap="memberResult" parameterType="String">
+ 		 SELECT ID, PWD, NAME, GENDER, EMAIL1, EMAIL2, TEL1, TEL2, TEL3, ZIPCODE, ADDR1, ADDR2, LOGTIME FROM MEMBER WHERE ID=#{id}
+ 	</select>
+ 	
+ 	<update id="update" parameterType="member">
+		UPDATE MEMBER 
+		SET PWD=#{pwd}, NAME=#{name}, GENDER=#{gender}, EMAIL1=#{email1}, 
+		EMAIL2=#{email2},TEL1=#{tel1}, TEL2=#{tel2}, TEL3=#{tel3},ZIPCODE=#{zipcode}, 
+		ADDR1=#{addr1},ADDR2=#{addr2},
+		LOGTIME=sysdate
+		WHERE ID=#{id}
+ 	</update>
+ 	
+ </mapper>

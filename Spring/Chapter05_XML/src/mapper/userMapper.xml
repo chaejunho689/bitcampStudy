@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+ 
+<mapper namespace="userSQL">
+
+	<!-- 아이디 중복 체크 -->
+	<select id="isExistId" parameterType="String" resultType="user.bean.UserDTO"> 
+		select * from usertable where id=#{id}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="write" parameterType="java.util.Map"> 
+		INSERT INTO usertable(name , id , pwd) VALUES(#{name}, #{id}, #{pwd}) 
+	</insert>
+	
+	<select id="getUserList" resultType="user">
+		select * from usertable;
+	 </select>
+	
+	<!-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               - 회원정보수정 -->
+	<update id="update" parameterType="String">
+		update usertable set name = #{name} , #{id} , #{pwd}
+		where id = #{id}                                                                                
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete usertable where id = #{id}        
+	</delete>
+</mapper>

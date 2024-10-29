@@ -1,0 +1,57 @@
+.sungjukList {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sungjukList h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+}
+
+.sungjukList table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+}
+
+.sungjukList th, .sungjukList td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.sungjukList th {
+    background-color: #E60023;
+    color: white;
+    font-weight: bold;
+}
+
+.sungjukList tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.sungjukList tr:hover {
+    background-color: #f1c40f;
+    cursor: pointer;
+}
+
+.sungjukList td {
+    color: #555;
+    font-size: 16px;
+}
+
+.sungjukList th:first-child, .sungjukList td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.sungjukList th:last-child, .sungjukList td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="userSQL">
+ 
+ 	<!-- 만약에 테이블의 컬럼과 객체의 필드명이 다른 경우 -->
+	<resultMap	type="user.bean.UserDTO" id="userResult">
+		<result column ="NAME" property ="name" />		
+		<result column ="ID" property ="id" />		
+		<result column ="PWD" property ="pwd" />		
+	</resultMap>
+ 
+ 
+ 	<insert id="write" parameterType="user">
+ 		INSERT INTO USERTABLE VALUES(#{name}, #{id}, #{pwd})
+ 	</insert>
+ 	
+ 	<select id="getAllList" resultMap="userResult">
+ 		select * from usertable
+ 	</select>
+ 	
+ 	 <select id="getUser" resultMap="userResult" parameterType="String">
+ 		select * from usertable where id=#{id}
+ 	</select>
+ 	 
+ 	<update id="update" parameterType="user">
+ 		UPDATE USERTABLE SET NAME = #{name}, pwd=#{pwd} WHERE ID = #{id} 
+ 	</update>
+ 	
+ 	<delete id="delete" parameterType="user">
+ 		DELETE USERTABLE WHERE ID = #{id}
+ 	</delete>
+ 	
+ 	<select id="search" resultMap="userResult" parameterType="map">
+ 		select * from usertable
+ 		<if test="search_select == 1">		
+ 		where name like '%'||#{search_keyword}||'%'
+ 		</if>
+ 		<if test="search_select == 2">		
+ 		where id like '%'||#{search_keyword}||'%'
+ 		</if>
+ 	</select>
+ </mapper>
