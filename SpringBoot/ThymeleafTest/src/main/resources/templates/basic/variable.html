@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ <h3> Object </h3>
+<ul>
+	<li>${aa.name} = <span th:text="${aa.name}"> </span></li>
+	<li>${bb['name']} = <span th:text="${bb['name']}"> </span></li>
+	<li>${cc.getName()} = <span th:text="${cc.getName()}"> </span></li>
+</ul>
+
+<h3> List </h3>
+<ul>
+	<li> ${list[0].name} = <span th:text="${list[0].name}"> </span>
+	<li> ${list[1]['name']} = <span th:text="${list[1]['name']}"> </span>
+	<li> ${list[2].getName()} = <span th:text="${list[2].getName()}"> </span>
+</ul>
+
+<h3> map </h3>
+<ul>
+	<li> ${map['aa'].name} = <span th:text="${map['aa'].name}"> </span>
+	<li> ${map['bb']['name']} = <span th:text="${map['bb']['name']}"> </span>
+	<li> ${map['cc'].getName()} = <span th:text="${map['cc'].getName()}"> </span>
+</ul>
+
+<h3> 지역변수 => (th:with) </h3>
+<ul th:with="first = ${list[0]}">
+	<li> 이름 = <span th:text="${first.name}"></span></li>
+	<li> 나이 = <span th:text="${first.age}"></span></li>
+</ul>
+<ul th:with="second = ${list[1]}">
+	<li> 이름 = <span th:text="${second.name}"></span></li>
+	<li> 나이 = <span th:text="${second.age}"></span></li>
+</ul>
+<ul th:with="thrid = ${list[3]}">
+	<li> 이름 = <span th:text="${thrid.name}"></span></li>
+	<li> 나이 = <span th:text="${thrid.age}"></span></li>
+</ul>
+</body>
+</html>
