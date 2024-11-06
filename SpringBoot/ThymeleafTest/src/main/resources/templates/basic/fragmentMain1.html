@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+header {
+	background-color: yellow;
+}
+section {
+	background-color: blue;
+}
+footer {
+	background-color: green;
+}
+
+</style>
+</head>
+<body>
+	<header th:insert="basic/fragment/menu :: header"> 여기는 menu </header>
+	<section>
+		여기는 fragmentMain1.html 페이지입니다.
+	</section>
+	<footer th:insert="basic/fragment/info :: info"> 여기는 info</footer>
+
+</body>
+</html>
+
+<!--/*-->
+th:insert는 다른 HTML 파일의 특정 프로그래먼트를 현재 문서에 삽입
+"basic/fragment/menu" :: hedaer"는 basic/fragment/menu.html 파일의 header라는 이름의 프래그먼트를 사입하라는 의미
+
+<!--*/-->
